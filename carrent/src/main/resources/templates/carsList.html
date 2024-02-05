@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Elérhető autók</title>
+</head>
+<body>
+<h2>Elérhető autók</h2>
+<div th:if="${cars.isEmpty()}">
+    <p>Nincsenek elérhető autók ebben az időszakban.</p>
+</div>
+<div th:each="car : ${cars}">
+    <p th:text="|${car.make} ${car.model}|"></p>
+    <!-- További autó információk megjelenítése -->
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Autókölcsönző</title>-->
+
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+
+<!--    &lt;!&ndash; jQuery UI könyvtár &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+<!--    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+
+
+<!--    &lt;!&ndash; Ide kerülhetnek a CSS stílusok &ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+
+
+
+<!--<form th:action="@{/searchCars}" method="get">-->
+<!--    <input type="text" id="startDate" name="startDate" />-->
+<!--    <input type="text" id="endDate" name="endDate" />-->
+<!--    <button type="submit">Keresés</button>-->
+<!--</form>-->
+
+<!--<script>-->
+<!--    $(function() {-->
+<!--        $("#startDate").datepicker({ dateFormat: 'yy-mm-dd' });-->
+<!--        $("#endDate").datepicker({ dateFormat: 'yy-mm-dd' });-->
+<!--    });-->
+<!--</script>-->
+
+
+
+
+<!--<h1>Elérhető autók</h1>-->
+<!--<div th:each="car : ${cars}">-->
+<!--    <div>-->
+<!--        <h2 th:text="${car.make} + ' ' + ${car.model}">Car Make and Model</h2>-->
+<!--        <img th:if="${car.imageUrl}" th:src="${car.imageUrl}" alt="Autó képe"/>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
