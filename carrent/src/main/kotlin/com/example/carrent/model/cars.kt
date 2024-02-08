@@ -1,6 +1,7 @@
 package com.example.carrent.model
 
 import jakarta.persistence.*
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "cars")
@@ -14,9 +15,12 @@ data class Car(
 
         @Column(nullable = false)
         val model: String,
+        @Column(nullable = false)
+        val price: BigDecimal = BigDecimal.ZERO,
 
         @OneToMany(mappedBy = "car", cascade = [CascadeType.ALL], orphanRemoval = true)
         val reservations: List<Reservation> = mutableListOf())
 
 
         val imageUrl: String? = null
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Autó foglalása</title>
+</head>
+<body>
+<h2>Autó foglalása</h2>
+<form th:action="@{/submitReservation}" method="post">
+    <input type="hidden" name="carId" th:value="${carId}" />
+    <div>
+        <label for="name">Név:</label>
+        <input type="text" id="name" name="name" required />
+    </div>
+    <div>
+        <label for="email">Email cím:</label>
+        <input type="email" id="email" name="email" required />
+    </div>
+    <div>
+        <label for="address">Cím:</label>
+        <input type="text" id="address" name="address" required />
+    </div>
+    <div>
+        <label for="phone">Telefonszám:</label>
+        <input type="tel" id="phone" name="phone" required />
+    </div>
+    <div>
+        <label for="startDate">Kezdő dátum:</label>
+        <input type="text" id="startDate" name="startDate" th:value="${startDate}" required readonly/>
+    </div>
+    <div>
+        <label for="endDate">Befejező dátum:</label>
+        <input type="text" id="endDate" name="endDate" th:value="${endDate}" required readonly/>
+    </div>
+    <button type="submit">Foglalás</button>
+</form>
+</body>
+</html>
+

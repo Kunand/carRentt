@@ -9,8 +9,11 @@
     <p>Nincsenek elérhető autók ebben az időszakban.</p>
 </div>
 <div th:each="car : ${cars}">
-    <p th:text="|${car.make} ${car.model}|"></p>
+    <p th:text="|${car.make} ${car.model} ${car.price}|"></p>
     <!-- További autó információk megjelenítése -->
+    <a th:href="@{/reserve(carId=${car.id}, startDate=${startDate}, endDate=${endDate})}" class="btn btn-primary">Foglalás</a>
+
+    <!--    <a th:href="@{/reserve(carId=${car.id})}" class="btn btn-primary">Foglalás</a>-->
 </div>
 </body>
 </html>
