@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <h2>Autók</h2>
+    <div>
+        <ul>
+            <li th:each="car : ${cars}">
+                <span th:text="${car.make} + ' ' + ${car.model} + ' ' + ${car.price}></span>
+                <form th:action="@{/adminDashboard/toggleActiveStatus}" method="post">
+                    <input type="hidden" name="carId" th:value="${car.id}" />
+                    <button type="submit">Aktív/Deaktív</button>
+                    <button th:href="@{/adminDashboard/editCarForm(carId=${car.id})}" class="btn btn-secondary">Edit</button>
+                </form>
+                <!-- További autó adatok... -->
+            </li>
+        </ul>
+    </div>
+
+
+    <h2>Foglalások</h2>
+    <div>
+        <ul>
+            <li th:each="reservation : ${reservations}">
+                <span th:text="${reservation.car.make} + ' ' + ${reservation.car.model} + ': ' + ${reservation.startDate} + ' - ' + ${reservation.endDate}"></span>
+                <!-- További foglalási adatok... -->
+            </li>
+        </ul>
+    </div>
+
+    <button th:href="@{/adminDashboard/addNewCarForm}" class="btn btn-primary">Új autó</button>

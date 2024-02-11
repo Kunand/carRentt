@@ -7,6 +7,8 @@
 <h2>Autó foglalása</h2>
 <form th:action="@{/submitReservation}" method="post">
     <input type="hidden" name="carId" th:value="${carId}" />
+    <input type="hidden" name="startDate" th:value="${startDate}" />
+    <input type="hidden" name="endDate" th:value="${endDate}" />
     <div>
         <label for="name">Név:</label>
         <input type="text" id="name" name="name" required />

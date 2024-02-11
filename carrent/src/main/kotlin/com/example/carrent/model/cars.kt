@@ -18,6 +18,9 @@ data class Car(
         @Column(nullable = false)
         val price: BigDecimal = BigDecimal.ZERO,
 
+        @Column(nullable = false)
+        var isactive: Boolean,
+
         @OneToMany(mappedBy = "car", cascade = [CascadeType.ALL], orphanRemoval = true)
         val reservations: List<Reservation> = mutableListOf())
 

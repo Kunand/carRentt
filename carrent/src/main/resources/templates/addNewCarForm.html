@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Új autó hozzáadása</title>
+</head>
+<body>
+<h2>Új autó hozzáadása</h2>
+<form th:action="@{/adminDashboard/addNewCarForm}" method="post">
+    <label for="make">Make</label>
+    <input type="text" id="make" name="make" required>
+
+    <label for="model">Modell</label>
+    <input type="text" id="model" name="model" required>
+
+    <label for="price">Price</label>
+    <input type="number" id="price" name="price" step="0.01" required>
+
+    <label for="isactive">Aktív</label>
+    <select id="isactive" name="isactive">
+        <option value="true">Igen</option>
+        <option value="false">Nem</option>
+    </select>
+
+    <button type="submit">Autó hozzáadása</button>
+</form>
+</body>
+</html>

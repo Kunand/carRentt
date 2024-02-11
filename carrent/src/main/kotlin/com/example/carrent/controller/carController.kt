@@ -44,8 +44,62 @@ class CarController(private val carService: CarService) {
         model.addAttribute("carId", carId)
         model.addAttribute("startDate", startDate)
         model.addAttribute("endDate", endDate)
-        return "reserve" // A Thymeleaf sablon neve
+        return "reserve"
     }
+    @PostMapping("/submitReservation")
+    fun submitReservation(
+            @RequestParam("carId") carId: Long,
+            @RequestParam("startDate") startDate: String,
+            @RequestParam("endDate") endDate: String,
+            model: Model
+   ): String {
+        println(startDate)
+        val start = LocalDate.parse(startDate)
+        val end = LocalDate.parse(endDate)
+        println(start)
+        println(end)
+        // Itt hívd meg a service rétegben lévő reserveCar metódust
+        carService.reserveCar(carId, start, end)
+
+        // Sikeres foglalás után adj hozzá attribútumokat a modellhez, ha szükséges
+        model.addAttribute("carId", carId)
+        model.addAttribute("startDate", startDate)
+        model.addAttribute("endDate", endDate)
+        return "successReserve" // Átirányítás a sikeres foglalást jelző oldalra
+    }
+
+
+
+//    @PostMapping("/submitReservation")
+//    fun submitReservation(
+//            @RequestParam("carId") carId: Long,
+//            @RequestParam("startDate") startDate: String,
+//            @RequestParam("endDate") endDate: String,
+////            @RequestParam name: String,
+////            @RequestParam email: String,
+////            @RequestParam address: String,
+////            @RequestParam phone: String,
+//            model: Model
+//    ): String {
+//        model.addAttribute("carId", carId)
+//        model.addAttribute("startDate", startDate)
+//        model.addAttribute("endDate", endDate)
+//        return "successReserve"
+
+
+//        try {
+//            val start = LocalDate.parse(startDate)
+//            val end = LocalDate.parse(endDate)
+//            carService.reserveCar(carId, start, end)
+//            redirectAttributes.addFlashAttribute("successMessage", "Az autó sikeresen lefoglalva.")
+//        } catch (e: Exception) {
+//            redirectAttributes.addFlashAttribute("errorMessage", "Foglalási hiba: ${e.message}")
+//            return "redirect:/reserve"
+//        }
+//        return "redirect:/cars"
+    }
+
+
 
 
 //    @PostMapping("/submitReservation")
@@ -65,7 +119,7 @@ class CarController(private val carService: CarService) {
 //        }
 //        return "redirect:/cars" // Visszairányítás az autók listájához vagy egy sikeres foglalást jelző oldalra
 //    }
-}
+
 
 
 

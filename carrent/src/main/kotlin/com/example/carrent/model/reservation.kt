@@ -1,22 +1,20 @@
 package com.example.carrent.model
 
-import jakarta.persistence.FetchType
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.JoinColumn
-import java.time.LocalDate
 import jakarta.persistence.*
+import java.time.LocalDate
 
 @Entity
-class Reservation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long? = null
+@Table(name = "reservation")
+data class Reservation(
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        val id: Long? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cars_id")
-    private val car: Car? = null
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "cars_id")
+        val car: Car? = null,
 
-    private val startDate: LocalDate? = null
-    private val endDate: LocalDate? = null // Standard getters és setters...
-}
+        val startDate: LocalDate? = null,
+
+        val endDate: LocalDate? = null
+)
