@@ -15,11 +15,9 @@ class CarService(private val carRepository: CarRepository,
 
     fun findAvailableCars(startDate: LocalDate, endDate: LocalDate): List<Car> {
         val reservedCarIds = reservationRepository.findReservedCarIds(startDate, endDate)
-//        if (reservedCarIds.isEmpty()) {
-//            // Ha nincsenek foglalt autók, visszaadhatjuk az összes autót.
-//            return carRepository.findAll()
-//        }
-        // Kizárjuk a foglalt autókat az ID-juk alapján.
+        if (reservedCarIds.isEmpty()) {
+            return carRepository.findAll()
+        }
         return carRepository.findAvailableCars(reservedCarIds)
     }
     fun reserveCar(carId: Long, startDate: LocalDate, endDate: LocalDate) {

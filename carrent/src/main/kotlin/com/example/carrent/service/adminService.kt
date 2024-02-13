@@ -35,7 +35,7 @@ class AdminService(private val carRepository: CarRepository,
     fun toggleCarActiveStatus(carId: Long) {
         val car = carRepository.findById(carId)
         car.ifPresent {
-            it.isactive = it.isactive?.not() ?: true // Ha a car.isActive null, akkor alapértelmezetten 'true'-ra állítjuk
+            it.isactive = it.isactive?.not() ?: true
             carRepository.save(it)
         }
     }
@@ -45,7 +45,4 @@ class AdminService(private val carRepository: CarRepository,
         carRepository.save(car)
     }
 
-
-
-    // További metódusok az autók szerkesztéséhez, új autó felviteléhez stb.
 }
