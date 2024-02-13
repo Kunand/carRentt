@@ -1,14 +1,12 @@
 package com.example.carrent.controller
 
 
+import com.example.carrent.model.Car
 import com.example.carrent.service.AdminService
 
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
 import java.math.BigDecimal
 
@@ -53,6 +51,23 @@ class AdminController(private val adminService: AdminService) {
         redirectAttributes.addFlashAttribute("successMessage", "Új autó sikeresen hozzáadva.")
         return "redirect:/adminDashboard"
     }
+
+    @GetMapping("/editCarForm")
+    fun editCarForm(@RequestParam("carId") carId: Long, model: Model): String {
+        val car = adminService.findCarById(carId)
+        model.addAttribute("car", car)
+        return "editCarForm"
+    }
+
+
+    @PostMapping("/editCarForm")
+    fun updateCar(@ModelAttribute car: Car, redirectAttributes: RedirectAttributes): String {
+        adminService.updateCar(car)
+        redirectAttributes.addFlashAttribute("successMessage", "Autó frissítve.")
+        return "redirect:/adminDashboard"
+    }
+
+
 
 
 }

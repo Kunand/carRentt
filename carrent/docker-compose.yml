@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  app:
+    image: app-image-name:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/carrent
+      SPRING_DATASOURCE_USERNAME: nem
+      SPRING_DATASOURCE_PASSWORD: 16t7trgg
+      SPRING_JPA_HIBERNATE_DDL-AUTO: update
+      SPRING_LIQUIBASE_CHANGE-LOG: classpath:/db/changelog/db.changelog-master.yaml
+    depends_on:
+      - db
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: carrent
+      POSTGRES_USER: nem
+      POSTGRES_PASSWORD: 16t7trgg
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:

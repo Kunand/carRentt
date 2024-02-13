@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Elérhető autók</title>
+    <title>Available Cars</title>
 </head>
 <body>
-<h2>Elérhető autók</h2>
+<h2>Available Cars</h2>
 <div th:if="${cars.isEmpty()}">
-    <p>Nincsenek elérhető autók ebben az időszakban.</p>
+    <p>No available car</p>
 </div>
 <div th:each="car : ${cars}">
     <p th:text="|${car.make} ${car.model} ${car.price}|"></p>

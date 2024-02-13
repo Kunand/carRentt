@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Új autó hozzáadása</title>
+    <title>New car</title>
 </head>
 <body>
-<h2>Új autó hozzáadása</h2>
+<h2>Upload new car</h2>
 <form th:action="@{/adminDashboard/addNewCarForm}" method="post">
     <label for="make">Make</label>
     <input type="text" id="make" name="make" required>
@@ -17,11 +17,11 @@
 
     <label for="isactive">Aktív</label>
     <select id="isactive" name="isactive">
-        <option value="true">Igen</option>
-        <option value="false">Nem</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
     </select>
 
-    <button type="submit">Autó hozzáadása</button>
+    <button type="submit">Submit</button>
 </form>
 </body>
 </html>

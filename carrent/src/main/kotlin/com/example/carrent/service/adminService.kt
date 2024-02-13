@@ -16,6 +16,18 @@ class AdminService(private val carRepository: CarRepository,
         return reservationRepository.findAll()
     }
 
+    fun findCarById(carId: Long): Car {
+        return carRepository.findById(carId).orElseThrow {
+            NoSuchElementException("No car with id: $carId")
+
+        }
+    }
+
+    fun updateCar(car: Car) {
+        carRepository.save(car) // Ez automatikusan frissíti az autót, ha az `id` már létezik
+    }
+
+
     fun findAllCars(): List<Car> {
         return carRepository.findAll()
     }
